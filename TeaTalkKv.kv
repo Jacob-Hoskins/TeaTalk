@@ -1,0 +1,192 @@
+WindowManager:
+    LoginLayout:
+    Register:
+    ResetPassword:
+    ResetConfirm:
+
+
+<MyBackdropBackLayer@Image>
+    size_hint: 2,2
+    source: "MainImg.png"
+    pos_hint: {"center_x": .5, "center_y": .5}
+
+<LoginLayout>:
+    name: 'loginPage'
+
+    Screen:
+        MDBackdrop:
+            id: backdrop
+            icon: 'aarow-down-thick'
+            left_action_items: [['arrow-down-thick', lambda x: self.open()]]
+            title: "TeaTalk"
+            radius_left: "25dp"
+            radius_right: "0dp"
+            header_text: ""
+            md_bg_color: [153/255, 102/255, 206/255, .9]
+
+            MDBackdropBackLayer:
+                MyBackdropBackLayer:
+                    id: backlayer
+
+            MDBackdropFrontLayer:
+                MDFloatLayout:
+
+                    orientation: "vertical"
+
+                    MDLabel:
+                        text: "Let's fill your cup"
+                        pos_hint: {'center_x': 0.5, 'center_y':.9}
+                        halign: 'center'
+
+
+                    MDTextFieldRect:
+                        id: username
+                        hint_text: 'Username'
+                        size_hint: (.7, .08)
+                        pos_hint: {'center_x':0.5, 'center_y':0.7}
+                        radius: [25, 25, 50, 50]
+
+
+                    MDTextFieldRect:
+                        id: password
+                        hint_text: 'Password'
+                        size_hint: (.7, .08)
+                        pos_hint: {'center_x':0.5, 'center_y':0.6}
+
+                    MDTextButton:
+                        text: 'Forgot Password'
+                        size: "48dp", "48dp"
+                        pos_hint: {'center_x': .5, 'center_y': .4}
+                        color: [153/255, 102/255, 206/255, .9]
+                        on_release: app.root.current = "resetPassword"
+
+                    MDRoundFlatButton:
+                        text: 'Login'
+                        text_color: 0, 0, 0, 1
+                        md_bg_color: [153/255, 102/255, 206/255, .9]
+                        text_color: [1, 1, 1, 1]
+                        pos_hint: {'center_x':0.5, 'center_y': 0.3}
+                        on_release: root.login()
+
+                    MDTextButton:
+                        text: 'Sign Up'
+                        text_color: 0, 0, 0, 1
+                        color: [153/255, 102/255, 206/255, .9]
+                        pos_hint: {'center_x':0.5, 'center_y': 0.18}
+                        on_release: root.signUp()
+
+
+<Register>:
+    name: 'signUpPage'
+    Screen:
+        MDFloatLayout:
+            orientation: 'vertical'
+
+            MDLabel:
+                text: 'Get ready to sip'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+                halign: 'center'
+
+            MDTextFieldRect:
+                hint_text: "Your full name*"
+                size_hint: (.7, .08)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                multiLine: False
+                required: True
+
+            MDTextFieldRect:
+                hint_text: "Email Address"
+                size_hint: (.7, .08)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+                multiLine: False
+
+            MDTextFieldRect:
+                hint_text: "Date of birth"
+                size_hint: (.7, .08)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                multiLine: False
+                required: True
+
+            MDTextFieldRect:
+                hint_text: "Your full name"
+                size_hint: (.7, .08)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                multiLine: False
+                required: True
+
+            MDLabel:
+                text: 'By creating an account, you agree to our'
+                pos_hint: {'center_x': 0.6, 'center_y': 0.3}
+                font_size: 10
+
+            MDTextButton:
+                text: 'Terms of Use'
+                pos_hint: {'center_x': 0.8, 'center_y': 0.3}
+                font_size: 10
+                color: [153/255, 102/255, 206/255, .9]
+
+            MDRoundFlatButton:
+                text: 'Create an account'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                md_bg_color: [153/255, 102/255, 206/255, .9]
+                text_color:[1, 1, 1, 1]
+                on_release: root.createAccount()
+
+            MDLabel:
+                text: 'Already Registered?'
+                pos_hint: {'center_x': 0.7, 'center_y': 0.1}
+                font_size: 15
+
+            MDTextButton:
+                text: 'Log In'
+                pos_hint: {'center_x': 0.73, 'center_y': 0.1}
+                color: [153/255, 102/255, 206/255, .9]
+                font_size: 15
+                on_release: root.logIn()
+
+<ResetPassword>:
+    name: 'resetPassword'
+    Screen:
+
+
+        MDFloatLayout:
+
+            MDLabel:
+                text: 'Reset your password'
+                pos_hint: {'center_y': 0.6}
+                halign: 'center'
+
+            MDTextFieldRect:
+                id: email
+                hint_text: "Email address*"
+                size_hint: (.7, .08)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                required: True
+
+            MDRoundFlatButton:
+                text: "Reset password"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+                md_bg_color: [153/255, 102/255, 206/255, .9]
+                text_color: [1, 1, 1, 1]
+                on_release: root.resetPassword()
+
+            MDTextButton:
+                text: 'Nevermind'
+                on_release: app.root.current = 'loginPage'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                color: [153/255, 102/255, 206/255, .9]
+
+<ResetConfirm>:
+    name: 'resetConfirm'
+
+    Screen:
+        MDFloatLayout:
+            MDLabel:
+                text: "Almost there"
+
+            MDRoundFlatButton:
+                text: 'Back to login'
+                on_release: app.root.current = 'loginPage'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                md_bg_color: [153/255, 102/255, 206/255, .9]
+                text_color: [1, 1, 1, 1]
