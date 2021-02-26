@@ -1,6 +1,4 @@
-from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivymd.uix.screen import MDScreen
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
 from kivy.lang import Builder
@@ -13,7 +11,7 @@ db = mysql.connector.connect(
     host="localhost",
     user='root',
     passwd='Thepassword59..',
-    database="testdatabase"
+    database="teatalk"
 )
 
 mycursor = db.cursor()
@@ -30,10 +28,20 @@ class ResetPassword(Screen):
         print("Clicked")
         self.manager.current = 'resetConfirm'
 
+
+
 class Register(Screen):
 
     def createAccount(self):
         print("Clicked")
+        fullName = self.ids.fullName.text
+        print(fullName)
+        email = self.ids.newEmail.text
+        print(email)
+        mycursor.execute("INSERT INTO userinfo(fullname, email) VALUES (%s,%s)", (fullName, email))
+        db.commit()
+
+
 
     def logIn(self):
         self.manager.current = "loginPage"

@@ -35,23 +35,26 @@ WindowManager:
 
                     MDLabel:
                         text: "Let's fill your cup"
+                        font_style: 'H6'
                         pos_hint: {'center_x': 0.5, 'center_y':.9}
                         halign: 'center'
 
 
-                    MDTextFieldRect:
+                    MDTextFieldRound:
                         id: username
                         hint_text: 'Username'
                         size_hint: (.7, .08)
                         pos_hint: {'center_x':0.5, 'center_y':0.7}
                         radius: [25, 25, 50, 50]
+                        normal_color: [1, 1, 1, 1]
 
 
-                    MDTextFieldRect:
+                    MDTextFieldRound:
                         id: password
                         hint_text: 'Password'
                         size_hint: (.7, .08)
                         pos_hint: {'center_x':0.5, 'center_y':0.6}
+                        normal_color: [1, 1, 1, 1]
 
                     MDTextButton:
                         text: 'Forgot Password'
@@ -62,6 +65,7 @@ WindowManager:
 
                     MDRoundFlatButton:
                         text: 'Login'
+                        size_hint: .8, .1
                         text_color: 0, 0, 0, 1
                         md_bg_color: [153/255, 102/255, 206/255, .9]
                         text_color: [1, 1, 1, 1]
@@ -88,13 +92,16 @@ WindowManager:
                 halign: 'center'
 
             MDTextFieldRect:
+                id: fullName
                 hint_text: "Your full name*"
                 size_hint: (.7, .08)
                 pos_hint: {'center_x': 0.5, 'center_y': 0.7}
                 multiLine: False
                 required: True
 
+
             MDTextFieldRect:
+                id: newEmail
                 hint_text: "Email Address"
                 size_hint: (.7, .08)
                 pos_hint: {'center_x': 0.5, 'center_y': 0.6}
@@ -108,7 +115,7 @@ WindowManager:
                 required: True
 
             MDTextFieldRect:
-                hint_text: "Your full name"
+                hint_text: "Gender"
                 size_hint: (.7, .08)
                 pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                 multiLine: False
